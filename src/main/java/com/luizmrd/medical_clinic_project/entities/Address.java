@@ -23,11 +23,16 @@ public class Address {
 
     private String state;
 
+
     @OneToOne
     @JoinColumn(name = "patient_id")
     @JsonIgnore
     private Patient patient;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
     public Address(Long id, String street, String complement, String number, Integer postCode, String neighborhood, String state) {
         this.id = id;
@@ -104,5 +109,13 @@ public class Address {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -1,41 +1,41 @@
 package com.luizmrd.medical_clinic_project.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.luizmrd.medical_clinic_project.entities.enuns.EmployeeType;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 @Entity
-@Table(name = "tb_patient")
-public class Patient implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@Table(name = "tb_user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    private String cpf;
+
     private Integer phone;
+
+    private Integer cpf;
+
     private String email;
 
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+
+    private Integer employeeType;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Address address;
 
 
-
-    public Patient(Long id, String name, String cpf, Integer phone, String email) {
+    public User(Long id, String name,EmployeeType employeeType,  Integer phone, Integer cpf, String email) {
         this.id = id;
         this.name = name;
-        this.cpf = cpf;
+        setEmployeeType(employeeType);
         this.phone = phone;
+        this.cpf = cpf;
         this.email = email;
     }
 
-    public Patient() {
+    public User() {
     }
 
     public Long getId() {
@@ -54,20 +54,20 @@ public class Patient implements Serializable {
         this.name = name;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public Integer getPhone() {
         return phone;
     }
 
     public void setPhone(Integer phone) {
         this.phone = phone;
+    }
+
+    public Integer getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Integer cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {
@@ -78,7 +78,17 @@ public class Patient implements Serializable {
         this.email = email;
     }
 
-    public Address getAddress(){
+    public EmployeeType getEmployeeType() {
+        return EmployeeType.valueOf(employeeType);
+    }
+
+    public void setEmployeeType(EmployeeType employeeType) {
+        if (employeeType != null){
+            this.employeeType = employeeType.getCode();
+        }
+    }
+
+    public Address getAddress() {
         return address;
     }
 
