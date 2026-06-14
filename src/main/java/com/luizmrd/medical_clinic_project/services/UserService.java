@@ -1,8 +1,7 @@
 package com.luizmrd.medical_clinic_project.services;
 
-import com.luizmrd.medical_clinic_project.entities.Patient;
 import com.luizmrd.medical_clinic_project.entities.User;
-import com.luizmrd.medical_clinic_project.repositories.PatientRepository;
+import com.luizmrd.medical_clinic_project.entities.enuns.EmployeeType;
 import com.luizmrd.medical_clinic_project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +21,14 @@ public class UserService {
     public User findById(Long id){
         Optional<User> obj = repository.findById(id);
         return obj.get();
+    }
+
+    public List<User> getUserByType(Integer employeeType) {
+        return repository.findByEmployeeType(employeeType);
+    }
+
+
+    public User insert(User obj){
+        return repository.save(obj);
     }
 }

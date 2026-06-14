@@ -3,7 +3,8 @@ package com.luizmrd.medical_clinic_project.entities.enuns;
 public enum EmployeeType {
     ADMIN(1),
     SECRETARIA(2),
-    MEDICO(3);
+    MEDICO(3),
+    PATIENT(4);
 
     private int code;
 

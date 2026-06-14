@@ -1,11 +1,9 @@
 package com.luizmrd.medical_clinic_project.test;
 
 import com.luizmrd.medical_clinic_project.entities.Address;
-import com.luizmrd.medical_clinic_project.entities.Patient;
 import com.luizmrd.medical_clinic_project.entities.User;
 import com.luizmrd.medical_clinic_project.entities.enuns.EmployeeType;
 import com.luizmrd.medical_clinic_project.repositories.AddressRepository;
-import com.luizmrd.medical_clinic_project.repositories.PatientRepository;
 import com.luizmrd.medical_clinic_project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,8 +13,6 @@ import org.springframework.context.annotation.Configuration;
 
     @Configuration
     public class Test implements CommandLineRunner {
-        @Autowired
-        private PatientRepository patientRepository;
 
         @Autowired
         private AddressRepository addressRepository;
@@ -27,9 +23,6 @@ import org.springframework.context.annotation.Configuration;
 
         public void run(String... args) throws Exception {
 
-        Patient p1 = new Patient(null,"Roberto","2323233",3136666,"roberto@gmail.com");
-
-        patientRepository.saveAll(Arrays.asList(p1));
 
 
 
@@ -47,9 +40,6 @@ import org.springframework.context.annotation.Configuration;
             userRepository.saveAll(Arrays.asList(u1,u2,u3));
 
 
-            p1.setAddress(a1);
-            a1.setPatient(p1);
-
             u2.setAddress(a3);
             a3.setUser(u2);
 
@@ -59,8 +49,6 @@ import org.springframework.context.annotation.Configuration;
             u1.setAddress(a2);
             a2.setUser(u1);
             userRepository.saveAll(Arrays.asList(u1,u2,u3));
-
-            patientRepository.save(p1);
 
 
 

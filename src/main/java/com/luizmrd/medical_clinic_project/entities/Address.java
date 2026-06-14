@@ -23,12 +23,6 @@ public class Address {
 
     private String state;
 
-
-    @OneToOne
-    @JoinColumn(name = "patient_id")
-    @JsonIgnore
-    private Patient patient;
-
     @OneToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
@@ -103,19 +97,12 @@ public class Address {
         this.state = state;
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+      public void setUser(User user) {
         this.user = user;
     }
 }

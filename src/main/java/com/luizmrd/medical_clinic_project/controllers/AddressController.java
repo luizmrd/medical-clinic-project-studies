@@ -1,10 +1,7 @@
 package com.luizmrd.medical_clinic_project.controllers;
 
 import com.luizmrd.medical_clinic_project.entities.Address;
-import com.luizmrd.medical_clinic_project.entities.Patient;
-import com.luizmrd.medical_clinic_project.repositories.AddressRepository;
 import com.luizmrd.medical_clinic_project.services.AddressService;
-import com.luizmrd.medical_clinic_project.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
